@@ -18,7 +18,10 @@ class Product(models.Model):
             return self.name
         
 class item_cart(models.Model):
-      owner = models.ForeignKey(User)
+      owner = models.ForeignKey(User, on_delete=models.CASCADE)
       items_count = models.IntegerField()
-      item_id = models.ForeignKey(Product)
+      item_id = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
+
+      def __str__(self):
+            return f"{self.quantity} x {self.product.name} in Order {self.order.id}"
 

@@ -1,0 +1,11 @@
+
+
+    <main class="container-fluid">
+        <h2>Login to account</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Login</button>
+            <h3><a href="{%url 'register'%}">make accaunt </a></h3>
+        </form>
+    </main>

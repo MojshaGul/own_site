@@ -1,0 +1,39 @@
+{%load static%}
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'styles/dis.css' %}">
+        <title>main page</title>
+    </head>
+
+    <body>
+        <div class="header">
+            <a href="{%url 'login'%}">Login</a>
+            <a href="{%url 'logout'%}">Logout</a>
+            <a href="{%url 'guide'%}">guide</a>
+        </div>
+        {%for product in page_product%}
+
+            <p><a href="{%url 'item' product.id%}">  {{product.name}}</a></p>
+        {%endfor%}
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link {% if not page_product.has_previous %} disabled {% endif %}" href="{% if page_product.has_previous %} {% url 'cbv_page' %}?page={{ page_product.previous_page_number }} {% endif %}" tabindex="-1" aria-disabled="true">
+                        Previous
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link {% if not page_product.has_next %} disabled {% endif %}" href="{% if page_product.has_next %} {% url 'cbv_page' %}?page={{ page_product.next_page_number }} {% endif %}" tabindex="-1" aria-disabled="true">
+                        Next
+                    </a>
+                </li>
+            </ul>
+        
+        </nav>
+    </body>
+</html>

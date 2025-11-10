@@ -4,8 +4,7 @@ from mai.views import *
 
 urlpatterns = [
     path('', baseView.as_view(), name='cbv_page'),
-    path('test_page/', baseView.as_view(), name='cbv_page2'),
-    path("guide_page/", aboutView(), name='guide'),
-    path('test_page/', baseView.as_view(), name='cbv_page2'),
-    path("anketa/", anketaView(), name='anketa'),
+    path("guide_page/", aboutView.as_view(), name='guide'),
+    path("anketa/", anketaView.as_view(), name='anketa'),
+    path("item/<int:id>", iteminfo.as_view(), name='item')
 ]
