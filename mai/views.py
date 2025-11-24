@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.core.paginator import Paginator
 from django.shortcuts import render
@@ -33,12 +33,15 @@ class anketaView(LoginRequiredMixin ,View):
         return render(request, 'anketa.html', context={"form": form})
     
     def post(self, request):
-        pass
+        form = createproduct(data=request.POST)
+        if form.is_valid():
+            a = (form.save())
+            print(a)
+            return redirect("cbv_page")
 
 class iteminfo(LoginRequiredMixin ,View):
-    def get(self, request):
-        item_id =request.GET.get("id")
-        item_data = Product.objects.filter(id = item_id)
+    def get(self, request, id):
+        item_data = Product.objects.filter(id = id).last()
         return render(request, 'iteminfo.html', context={"item_data": item_data})
     
     def post(self, request):

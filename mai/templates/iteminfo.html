@@ -1,0 +1,25 @@
+{%load static%}
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'styles/dis.css' %}">
+        <title>main page</title>
+    </head>
+
+    <body>
+        <div class="header">
+            <a href="{%url 'login'%}">Login</a>
+            <a href="{%url 'logout'%}">Logout</a>
+            <a href="{%url 'guide'%}">guide</a>
+        </div>
+        <p><h1>{{item_data.name}}</h1></p>
+        <p class="b"><span>{{item_data.description}}</span></p>
+         <p class="b"><span class="s">price</span><br><span>{{item_data.price}}</span></p>
+         <p class="b"><span class="s">count</span><br><span>{{item_data.categori}}</span></p>
+    
+    </body>
+</html>
